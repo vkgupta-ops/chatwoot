@@ -58,24 +58,22 @@ class Instagram::SendOnInstagramService < Base::SendOnChannelService
     query = { access_token: access_token }
     query[:appsecret_proof] = app_secret_proof if app_secret_proof
 
-    options = {
-      body: message_content
-    }
-
     # url = "https://graph.facebook.com/v11.0/me/messages?access_token=#{access_token}"
 
     response = HTTParty.post(
-      "https://graph.facebook.com/v11.0/me/messages",
+      'https://graph.facebook.com/v11.0/me/messages',
       body: message_content,
-      query: query,
+      query: query
     )
     # response = HTTParty.post(url, options)
-    Rails.logger.info("Instagram Error: #{response} : #{message_content}")
-    response.body
+
+    Rails.logger.info("Instagram response: #{response} : #{message_content}") if response[:body][:error]
+
+    response[:body]
   end
 
   def calculate_app_secret_proof(app_secret, access_token)
-     Facebook::Messenger::Configuration::AppSecretProofCalculator.call(
+    Facebook::Messenger::Configuration::AppSecretProofCalculator.call(
       app_secret, access_token
     )
   end

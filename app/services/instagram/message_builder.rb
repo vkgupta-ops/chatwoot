@@ -8,6 +8,7 @@ class Instagram::MessageBuilder < FacebookMessenger::MessageBuilder
   attr_reader :messaging
 
   def initialize(messaging, inbox, outgoing_echo: false)
+    super()
     @messaging = messaging
     @inbox = inbox
     @outgoing_echo = outgoing_echo
@@ -117,7 +118,6 @@ class Instagram::MessageBuilder < FacebookMessenger::MessageBuilder
     cw_message.update(content_attributes: content_attributes) if cw_message.present?
     cw_message.present?
   end
-
 
   ### Sample response
   # {
