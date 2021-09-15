@@ -32,7 +32,7 @@ Chatwoot is an open-source omnichannel customer support software. The developmen
 Now, a failed project is back on track and the prospects are looking great. The team is back to working on the project and this time, we are building it in the open. Thanks to the ideas and contributions from the community.
 
 
-## Features
+## Features and options
 
 Chatwoot gives an integrated view of conversations happening in different communication channels.
 

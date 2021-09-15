@@ -1,7 +1,8 @@
 # Security Policy
 Chatwoot is looking forward to working with security researchers across the world to keep Chatwoot and our users safe. If you have found an issue in our systems/applications, please reach out to us.
 
-## Reporting a Vulnerability
+## Reporting a Vulnerability 
+## Detecting compliance
 
 We use [huntr.dev](https://huntr.dev/) for security issues that affect our project. If you believe you have found a vulnerability, please disclose it via this [form](https://huntr.dev/bounties/disclose). 
 
