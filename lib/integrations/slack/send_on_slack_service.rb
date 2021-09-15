@@ -52,10 +52,21 @@ class Integrations::Slack::SendOnSlackService < Base::SendOnChannelService
       thread_ts: conversation.identifier,
       icon_url: avatar_url(message.sender)
     )
+    upload_file if message.attachments.any?
   rescue Slack::Web::Api::Errors::AccountInactive => e
     Rails.logger.info e
     hook.authorization_error!
     hook.disable if hook.enabled?
+  end
+
+  def upload_file
+    result = slack_client.files_upload(
+      channels: hook.reference_id,
+      initial_comment: 'Attached File!',
+      file: message.attachments.first.file_url
+    )
+    # Log the result
+    Rails.logger.info(result)
   end
 
   def sender_name(sender)
